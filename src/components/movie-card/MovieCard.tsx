@@ -1,5 +1,12 @@
 // Test -------------------------- Importing the Packages ---------------------------------
-import { Card, CardContent, CardMedia, Typography, Grid } from "@mui/material";
+import {
+  Card,
+  CardContent,
+  CardMedia,
+  Typography,
+  Grid,
+} from "@mui/material";
+
 
 // Test -------------------------- Importing the styles / other components ----------------
 
@@ -7,8 +14,9 @@ import { Card, CardContent, CardMedia, Typography, Grid } from "@mui/material";
 
 // Test -------------------------- The current component ----------------------------------
 const MovieCard = () => {
+  
   return (
-    <Grid item xs={2}>
+    <Grid item xs={6} sm={3} lg={2}>
       <Card
         sx={{
           maxWidth: "300px",

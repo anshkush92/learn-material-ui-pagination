@@ -1,1 +1,5 @@
 - [Adding .env file in React](https://create-react-app.dev/docs/adding-custom-environment-variables/)
+- [Redux Toolkit TypeScript](https://redux-toolkit.js.org/tutorials/typescript)
+- [Redux Toolkit TypeScript](https://www.youtube.com/watch?v=SM3uwYgGxNE&list=PLC3y8-rFHvwiaOAuTtVXittwybYIorRB3&index=31)
+- [Redux Toolkit TypeScript Example](https://itnext.io/build-a-react-redux-with-typescript-using-redux-toolkit-package-d17337aa6e39)
+- [useMediaQuery Hook IMP](https://mui.com/material-ui/react-use-media-query/)
