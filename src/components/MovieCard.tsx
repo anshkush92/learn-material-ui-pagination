@@ -6,8 +6,8 @@ import { useTheme } from "@mui/material/styles";
 import useMediaQuery from "@mui/material/useMediaQuery";
 
 // Test -------------------------- Importing the styles / other components ----------------
-import { useAppSelector, useAppDispatch } from "../../app/hooks";
-import { gtXS, gtSM, gtMD } from "../../features/currentWidthSlice";
+import { useAppSelector, useAppDispatch } from "../app/hooks";
+import { gtXS, gtSM, gtMD } from "../utilities/currentWidthSlice";
 
 // Test -------------------------- Structure of Props ----------------------------------
 

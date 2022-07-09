@@ -1,12 +1,13 @@
 // Test ---------------------- Importing the Redux Toolkit ---------------
 import { configureStore } from "@reduxjs/toolkit";
-import currentWidthReducer from "../features/currentWidthSlice";
-  
+import currentWidthReducer from "../utilities/currentWidthSlice";
+import pageChangeReducer from "../utilities/pageChangeSlice";
 
 // Test --------------------- Creating the store ------------------------
 export const store = configureStore({
   reducer: {
     currentWidth: currentWidthReducer,
+    pageChange: pageChangeReducer,
   },
 });
 
