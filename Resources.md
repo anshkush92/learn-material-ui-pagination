@@ -2,4 +2,5 @@
 - [Redux Toolkit TypeScript](https://redux-toolkit.js.org/tutorials/typescript)
 - [Redux Toolkit TypeScript](https://www.youtube.com/watch?v=SM3uwYgGxNE&list=PLC3y8-rFHvwiaOAuTtVXittwybYIorRB3&index=31)
 - [Redux Toolkit TypeScript Example](https://itnext.io/build-a-react-redux-with-typescript-using-redux-toolkit-package-d17337aa6e39)
+- [Redux Toolkit TypeScript Crash Course](https://www.youtube.com/watch?v=jR4fagDcvrc)
 - [useMediaQuery Hook IMP](https://mui.com/material-ui/react-use-media-query/)

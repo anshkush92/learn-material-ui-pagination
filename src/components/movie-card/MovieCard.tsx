@@ -5,16 +5,27 @@ import {
   CardMedia,
   Typography,
   Grid,
+  CardActions,
+  Button,
 } from "@mui/material";
 
-
 // Test -------------------------- Importing the styles / other components ----------------
+import { useAppSelector, useAppDispatch } from "../../app/hooks";
+import { gtXS } from "../../features/currentWidthSlice";
 
 // Test -------------------------- Structure of Props ----------------------------------
 
 // Test -------------------------- The current component ----------------------------------
 const MovieCard = () => {
-  
+  const currentWidth = useAppSelector((state) => state.currentWidth.XS);
+  const dispatch = useAppDispatch();
+
+  const testing = () => {
+    console.log(currentWidth);
+    dispatch(gtXS());
+    console.log("testing");
+  };
+
   return (
     <Grid item xs={6} sm={3} lg={2}>
       <Card
@@ -39,6 +50,9 @@ const MovieCard = () => {
         <CardContent>
           <Typography variant="h6">Thor Love and Thunder</Typography>
         </CardContent>
+        <CardActions>
+          <Button onClick={testing}>Test</Button>
+        </CardActions>
       </Card>
     </Grid>
   );

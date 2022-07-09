@@ -1,9 +1,13 @@
 // Test ---------------------- Importing the Redux Toolkit ---------------
 import { configureStore } from "@reduxjs/toolkit";
+import currentWidthReducer from "../features/currentWidthSlice";
+  
 
 // Test --------------------- Creating the store ------------------------
-const store = configureStore({
-  reducer: {},
+export const store = configureStore({
+  reducer: {
+    currentWidth: currentWidthReducer,
+  },
 });
 
 // Test --------------------- Exporting the store ---------------------
