@@ -1,5 +1,5 @@
 // Test -------------------------- Importing the Packages ---------------------------------
-import { Card, CardContent, CardMedia, Typography, Grid } from "@mui/material";
+import { CardContent, CardMedia, Typography, Grid } from "@mui/material";
 import { useEffect } from "react";
 
 import { useTheme } from "@mui/material/styles";
@@ -8,12 +8,10 @@ import useMediaQuery from "@mui/material/useMediaQuery";
 // Test -------------------------- Importing the styles / other components ----------------
 import { useAppSelector, useAppDispatch } from "../app/hooks";
 import { gtXS, gtSM, gtMD } from "../utilities/currentWidthSlice";
+import { StyledCard } from "./StyledCard";
 
 // Test -------------------------- Structure of Props ----------------------------------
-type MovieCardProps = {
-  moviePosterLink?: string;
-  movieTitle?: string;
-};
+import { MovieCardProps } from './MovieCard.type';
 
 // Test -------------------------- The current component ----------------------------------
 const MovieCard = ({ moviePosterLink, movieTitle }: MovieCardProps) => {
@@ -49,38 +47,25 @@ const MovieCard = ({ moviePosterLink, movieTitle }: MovieCardProps) => {
     ? "subtitle1"
     : "body1";
 
-  // console.log(greaterThanXS, greaterThanSM, greaterThanMD);
-  // console.log(headingVariant);
-
   return (
     <Grid item xs={6} sm={3} lg={2}>
-      <Card
-        sx={{
-          maxWidth: "300px",
-          height: "300px",
-          backgroundColor: "#dbdbdb",
-          display: "flex",
-          flexDirection: "column",
-          justifyContent: "center",
-          alignItems: "center",
-          m: 2,
-        }}
-      >
+      <StyledCard>
         <CardMedia
           component="img"
           src={`https://image.tmdb.org/t/p/w500${
             moviePosterLink || "/p1F51Lvj3sMopG948F5HsBbl43C.jpg"
           }`}
           alt="Thor"
-          loading="lazy"
           sx={{ height: "100%" }}
+          loading="lazy"
         ></CardMedia>
+
         <CardContent>
           <Typography variant={headingVariant} align="left">
             {movieTitle || "Thor Love and Thunder"}
           </Typography>
         </CardContent>
-      </Card>
+      </StyledCard>
     </Grid>
   );
 };

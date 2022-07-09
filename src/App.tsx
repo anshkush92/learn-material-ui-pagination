@@ -1,4 +1,4 @@
-import { Grid, Pagination, Stack, Box, Typography } from "@mui/material";
+import { Grid, Pagination, Stack, Box } from "@mui/material";
 import { useAppSelector, useAppDispatch } from "./app/hooks";
 import MovieCard from "./components/MovieCard";
 import { changePage } from "./utilities/pageChangeSlice";
@@ -20,13 +20,7 @@ const App = () => {
     };
 
     movieRequest();
-
-    return () => {
-      console.log("Cleanup from App.tsx");
-    };
   }, [page]);
-
-  console.log(movieData);
 
   const pageChangeHandler = (
     event: React.ChangeEvent<unknown>,
@@ -36,21 +30,21 @@ const App = () => {
   };
 
   return (
-    <Stack>
-      <Grid container mt={2}>
+    <Stack m={2}>
+      <Grid container spacing={2}>
         {movieData.map((movie) => (
           <MovieCard
+            key={movie.backdrop_path}
             moviePosterLink={movie.backdrop_path}
             movieTitle={movie.name || movie.title}
           ></MovieCard>
         ))}
       </Grid>
       <Box mb={2} display="flex" justifyContent="center">
-        <Typography variant="h5">{page}</Typography>
         <Pagination
           page={page}
           onChange={pageChangeHandler}
-          count={100}
+          count={1000}
           boundaryCount={2}
           showFirstButton
           showLastButton
