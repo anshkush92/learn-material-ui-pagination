@@ -9,20 +9,40 @@ import {
   Button,
 } from "@mui/material";
 
+import { useTheme } from "@mui/material/styles";
+import useMediaQuery from "@mui/material/useMediaQuery";
+
 // Test -------------------------- Importing the styles / other components ----------------
 import { useAppSelector, useAppDispatch } from "../../app/hooks";
-import { gtXS } from "../../features/currentWidthSlice";
+import { gtXS, gtSM, gtMD } from "../../features/currentWidthSlice";
 
 // Test -------------------------- Structure of Props ----------------------------------
 
 // Test -------------------------- The current component ----------------------------------
 const MovieCard = () => {
-  const currentWidth = useAppSelector((state) => state.currentWidth.XS);
+  const greaterThanXS = useAppSelector((state) => state.currentWidth.XS);
+  const greaterThanSM = useAppSelector((state) => state.currentWidth.SM);
+  const greaterThanMD = useAppSelector((state) => state.currentWidth.MD);
+
   const dispatch = useAppDispatch();
 
+  const theme = useTheme();
+  // False ---> Greater than SM , True ----> Less than SM
+  const lessThanSM = useMediaQuery(theme.breakpoints.down("sm"));
+  // False ---> Greater than MD, True ----> Lesser than MD
+  const lessThanMD = useMediaQuery(theme.breakpoints.down("md"));
+
   const testing = () => {
-    console.log(currentWidth);
-    dispatch(gtXS());
+    if (lessThanSM) {
+      dispatch(gtXS(true));
+    } else if (!lessThanMD) {
+      dispatch(gtMD(true));
+    } else if (!lessThanSM) {
+      if (lessThanMD) {
+        dispatch(gtSM(true));
+      }
+    }
+    console.log(greaterThanXS, greaterThanSM, greaterThanMD);
     console.log("testing");
   };
 
