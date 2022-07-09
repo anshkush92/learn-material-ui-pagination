@@ -1,13 +1,6 @@
 // Test -------------------------- Importing the Packages ---------------------------------
-import {
-  Card,
-  CardContent,
-  CardMedia,
-  Typography,
-  Grid,
-  CardActions,
-  Button,
-} from "@mui/material";
+import { Card, CardContent, CardMedia, Typography, Grid } from "@mui/material";
+import { useEffect } from "react";
 
 import { useTheme } from "@mui/material/styles";
 import useMediaQuery from "@mui/material/useMediaQuery";
@@ -32,7 +25,7 @@ const MovieCard = () => {
   // False ---> Greater than MD, True ----> Lesser than MD
   const lessThanMD = useMediaQuery(theme.breakpoints.down("md"));
 
-  const testing = () => {
+  useEffect(() => {
     if (lessThanSM) {
       dispatch(gtXS(true));
     } else if (!lessThanMD) {
@@ -42,9 +35,19 @@ const MovieCard = () => {
         dispatch(gtSM(true));
       }
     }
-    console.log(greaterThanXS, greaterThanSM, greaterThanMD);
-    console.log("testing");
-  };
+    return () => {
+      console.log("Cleanup Function from MovieCard.tsx");
+    };
+  }, [dispatch, lessThanSM, lessThanMD]);
+
+  const headingVariant = greaterThanXS
+    ? "subtitle2"
+    : greaterThanSM
+    ? "subtitle1"
+    : "body1";
+
+  console.log(greaterThanXS, greaterThanSM, greaterThanMD);
+  console.log(headingVariant);
 
   return (
     <Grid item xs={6} sm={3} lg={2}>
@@ -68,11 +71,10 @@ const MovieCard = () => {
           sx={{ height: "100%" }}
         ></CardMedia>
         <CardContent>
-          <Typography variant="h6">Thor Love and Thunder</Typography>
+          <Typography variant={headingVariant} align="left">
+            Thor Love and Thunder
+          </Typography>
         </CardContent>
-        <CardActions>
-          <Button onClick={testing}>Test</Button>
-        </CardActions>
       </Card>
     </Grid>
   );
