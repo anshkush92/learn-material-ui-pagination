@@ -10,12 +10,15 @@ import { useAppSelector, useAppDispatch } from "../app/hooks";
 import { gtXS, gtSM, gtMD } from "../utilities/currentWidthSlice";
 
 // Test -------------------------- Structure of Props ----------------------------------
+type MovieCardProps = {
+  moviePosterLink?: string;
+  movieTitle?: string;
+};
 
 // Test -------------------------- The current component ----------------------------------
-const MovieCard = () => {
+const MovieCard = ({ moviePosterLink, movieTitle }: MovieCardProps) => {
   const greaterThanXS = useAppSelector((state) => state.currentWidth.XS);
   const greaterThanSM = useAppSelector((state) => state.currentWidth.SM);
-  const greaterThanMD = useAppSelector((state) => state.currentWidth.MD);
 
   const dispatch = useAppDispatch();
 
@@ -46,8 +49,8 @@ const MovieCard = () => {
     ? "subtitle1"
     : "body1";
 
-  console.log(greaterThanXS, greaterThanSM, greaterThanMD);
-  console.log(headingVariant);
+  // console.log(greaterThanXS, greaterThanSM, greaterThanMD);
+  // console.log(headingVariant);
 
   return (
     <Grid item xs={6} sm={3} lg={2}>
@@ -65,14 +68,16 @@ const MovieCard = () => {
       >
         <CardMedia
           component="img"
-          src="https://image.tmdb.org/t/p/w500/p1F51Lvj3sMopG948F5HsBbl43C.jpg"
+          src={`https://image.tmdb.org/t/p/w500${
+            moviePosterLink || "/p1F51Lvj3sMopG948F5HsBbl43C.jpg"
+          }`}
           alt="Thor"
           loading="lazy"
           sx={{ height: "100%" }}
         ></CardMedia>
         <CardContent>
           <Typography variant={headingVariant} align="left">
-            Thor Love and Thunder
+            {movieTitle || "Thor Love and Thunder"}
           </Typography>
         </CardContent>
       </Card>
