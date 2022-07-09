@@ -1,13 +1,12 @@
 // Test -------------------------- Importing the Packages ---------------------------------
-import { CardContent, CardMedia, Typography, Grid } from "@mui/material";
 import { useEffect } from "react";
-
+import { CardContent, CardMedia, Typography, Grid } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
 import useMediaQuery from "@mui/material/useMediaQuery";
 
 // Test -------------------------- Importing the styles / other components ----------------
-import { useAppSelector, useAppDispatch } from "../app/hooks";
-import { gtXS, gtSM, gtMD } from "../utilities/currentWidthSlice";
+import { useAppSelector, useAppDispatch } from "../../app/hooks";
+import { gtXS, gtSM, gtMD } from "../../utilities/currentWidthSlice";
 import { StyledCard } from "./StyledCard";
 
 // Test -------------------------- Structure of Props ----------------------------------

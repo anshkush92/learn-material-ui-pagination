@@ -1,13 +1,11 @@
-import { Grid, Pagination, Stack, Box } from "@mui/material";
-import { useAppSelector, useAppDispatch } from "./app/hooks";
-import MovieCard from "./components/MovieCard";
-import { changePage } from "./utilities/pageChangeSlice";
+import { Grid, Stack, Box } from "@mui/material";
+import { useAppSelector } from "./app/hooks";
+import MovieCard from "./components/Movie/MovieCard";
 import { useEffect, useState } from "react";
+import Paginated from "./components/Pagination/Paginated";
 
 const App = () => {
   const page = useAppSelector((state) => state.pageChange.currentPage);
-  const dispatch = useAppDispatch();
-
   const [movieData, setMovieData] = useState<any[]>([]);
 
   useEffect(() => {
@@ -22,33 +20,21 @@ const App = () => {
     movieRequest();
   }, [page]);
 
-  const pageChangeHandler = (
-    event: React.ChangeEvent<unknown>,
-    value: number
-  ) => {
-    dispatch(changePage(value));
-  };
+  const movieDataComponent = movieData.map((movie) => (
+    <MovieCard
+      key={movie.backdrop_path}
+      moviePosterLink={movie.backdrop_path}
+      movieTitle={movie.name || movie.title}
+    ></MovieCard>
+  ));
 
   return (
     <Stack m={2}>
       <Grid container spacing={2}>
-        {movieData.map((movie) => (
-          <MovieCard
-            key={movie.backdrop_path}
-            moviePosterLink={movie.backdrop_path}
-            movieTitle={movie.name || movie.title}
-          ></MovieCard>
-        ))}
+        {movieDataComponent}
       </Grid>
-      <Box mb={2} display="flex" justifyContent="center">
-        <Pagination
-          page={page}
-          onChange={pageChangeHandler}
-          count={1000}
-          boundaryCount={2}
-          showFirstButton
-          showLastButton
-        ></Pagination>
+      <Box mb={1} mt={3} display="flex" justifyContent="center">
+        <Paginated></Paginated>
       </Box>
     </Stack>
   );
