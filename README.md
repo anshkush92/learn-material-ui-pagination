@@ -1,6 +1,8 @@
 ## Inspiration
 [![Netlify Status](https://api.netlify.com/api/v1/badges/26bbfd5f-a6df-4400-8060-2b7ae29b83fb/deploy-status)](https://app.netlify.com/sites/learn-material-ui-pagination/deploys)
 
+[SonarQube Report](https://sonarqube.betterpw.live/dashboard?id=ansh-mui-pagination-scan)
+
 [Hosted Here](https://learn-material-ui-pagination.netlify.app/)
 
     REACT_APP_MOVIE_API_KEY = "your-api-key"
